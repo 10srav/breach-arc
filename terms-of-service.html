@@ -10,15 +10,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <div class="loading-spinner" id="loadingSpinner">
-        <div class="spinner"></div>
-    </div>
-
     <nav class="navbar">
         <div class="container">
             <div class="logo">
                 <img src="images/Logo1.png" alt="Breach Arc - Cybersecurity Solutions" class="logo-img">
-                <span class="logo-text"><a href="index.html">BREACH ARC</a></span>
+                <span class="logo-text">BREACH ARC</span>
             </div>
             <div class="nav-wrapper">
                 <ul class="nav-links">
@@ -143,44 +139,29 @@
             navOverlay.className = 'nav-overlay';
             document.body.appendChild(navOverlay);
 
+            function closeMobileMenu() {
+                mobileMenuBtn.classList.remove('active');
+                navLinks.classList.remove('active');
+                navOverlay.classList.remove('active');
+                document.body.classList.remove('no-scroll');
+            }
+
             mobileMenuBtn.addEventListener('click', function() {
                 this.classList.toggle('active');
                 navLinks.classList.toggle('active');
                 navOverlay.classList.toggle('active');
                 document.body.classList.toggle('no-scroll');
             });
+            
+            navOverlay.addEventListener('click', closeMobileMenu);
 
-            navOverlay.addEventListener('click', function() {
-                mobileMenuBtn.classList.remove('active');
-                navLinks.classList.remove('active');
-                this.classList.remove('active');
-                document.body.classList.remove('no-scroll');
-            });
+            const isMobile = window.innerWidth <= 768;
 
             document.querySelectorAll('.nav-links a').forEach(link => {
                 link.addEventListener('click', () => {
-                    mobileMenuBtn.classList.remove('active');
-                    navLinks.classList.remove('active');
-                    navOverlay.classList.remove('active');
-                    document.body.classList.remove('no-scroll');
-                });
-            });
-
-            const loadingSpinner = document.getElementById('loadingSpinner');
-
-            document.querySelectorAll('a[href]').forEach(link => {
-                link.addEventListener('click', function(e) {
-                    const href = this.getAttribute('href');
-
-                    if (href.startsWith('#') || href === '' || href === '#') return;
-                    
-                    e.preventDefault();
-
-                    loadingSpinner.classList.add('active');
-
-                    setTimeout(() => {
-                        window.location.href = href;
-                    }, 500);
+                    if (isMobile) {
+                        closeMobileMenu();
+                    }
                 });
             });
         });
