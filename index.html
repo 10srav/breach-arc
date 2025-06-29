@@ -404,19 +404,51 @@
                         <a href="https://www.linkedin.com/company/breach-arc/"><i class="fab fa-linkedin"></i></a>
                     </div>
                 </div>
-                <form action="https://formsubmit.co/security@breacharc.com" method="POST" id="contactForm">
-  <input type="text" name="name" required placeholder="Your Name">
-  <input type="email" name="email" required placeholder="Your Email">
-  <textarea name="message" required placeholder="Your Message"></textarea>
+                <form id="contactForm" action="https://formsubmit.co/security@breacharc.com" method="POST" novalidate>
+  <div class="form-group">
+    <label for="name" class="visually-hidden">Name</label>
+    <input type="text" id="name" name="name" placeholder="Name" required minlength="2" maxlength="50" pattern="[A-Za-z\s]+" aria-required="true">
+    <div class="error-message" id="nameError"></div>
+  </div>
+  <div class="form-group">
+    <label for="email" class="visually-hidden">Email</label>
+    <input type="email" id="email" name="email" placeholder="Email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" aria-required="true">
+    <div class="error-message" id="emailError"></div>
+  </div>
+  <div class="form-group">
+    <label for="company" class="visually-hidden">Company</label>
+    <input type="text" id="company" name="company" placeholder="Company" minlength="2" maxlength="100">
+  </div>
+  <div class="form-group">
+    <label for="service" class="visually-hidden">Service Interest</label>
+    <select id="service" name="service" required aria-required="true">
+      <option value="" disabled selected>Service Interest</option>
+      <option value="vapt">Vulnerability Assessment & Penetration Testing (VAPT)</option>
+      <option value="red-teaming">Red Teaming</option>
+      <option value="ai-ml-security">AI/ML Security</option>
+      <option value="compliance">Compliance</option>
+      <option value="cloud-security">Cloud Security</option>
+      <option value="dark-web-monitoring">Dark Web Monitoring</option>
+      <option value="other">Other</option>
+    </select>
+    <div class="error-message" id="serviceError"></div>
+  </div>
+  <div class="form-group">
+    <label for="message" class="visually-hidden">Message</label>
+    <textarea id="message" name="message" placeholder="Message" rows="5" required minlength="10" maxlength="1000" aria-required="true"></textarea>
+    <div class="error-message" id="messageError"></div>
+  </div>
 
   <!-- Optional Hidden Config -->
   <input type="hidden" name="_captcha" value="false">
 
-  <button type="submit">Send</button>
+  <button type="submit" class="cta-primary" aria-label="Send message">
+    <span class="button-text">Send Message</span>
+  </button>
 </form>
 
-<!-- Thank You Message (hidden by default) -->
-<div id="thankYouMsg" style="display:none; margin-top: 20px; color: green; font-weight: bold;">
+<!-- Inline Thank You Message -->
+<div id="thankYouMsg" style="display:none; margin-top: 20px; color: var(--secondary-color); font-weight: bold;">
   ✅ Thank you! Your message has been sent successfully.
 </div>
 
@@ -441,6 +473,7 @@
     });
   });
 </script>
+
 
     <footer class="footer">
         <div class="container">
