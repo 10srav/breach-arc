@@ -886,7 +886,7 @@ ul {
 .footer {
     display: flex;
     background-color: var(--dark-color);
-    padding: 80px 0 0;
+    padding: 40px 0 0;
 }
 
 .footer-content {
@@ -1120,7 +1120,7 @@ ul {
 
     .footer-bottom {
         flex-direction: column;
-        gap: 20px;
+        gap:0px;
     }
 
     .with-nav-offset {
@@ -1341,3 +1341,33 @@ ul {
     padding: 12px 28px;
     font-size: 1rem;
 }
+
+/* Fix footer logo spacing */
+.footer .logo-img {
+    height: 40px;
+    width: auto;
+    margin-right: 0;
+    vertical-align: middle;
+}
+
+.footer-col:first-child p {
+    margin-top: 10px;
+    margin-bottom: 0;
+    color: var(--gray-color);
+}
+
+.footer .logo {
+    display: flex;
+    align-items: center;
+    gap: 0;
+}
+
+.footer .logo-img {
+    display: block;
+    margin-right: 0;
+    margin-left: 0;
+    height: 40px;
+    width: auto;
+    vertical-align: middle;
+}
+
